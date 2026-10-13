@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QueueForge</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Queue<span>Forge</span></h1>
+    <div class="auth">
+      <input id="apiKey" type="password" placeholder="API key (if required)" autocomplete="off" aria-label="API key">
+      <button id="saveKey">Save</button>
+      <span id="status" role="status" aria-live="polite"></span>
+    </div>
+  </header>
+  <main>
+    <section id="cards" class="cards" aria-label="Totals"></section>
+    <section class="filters" aria-label="Filters">
+      <label>State
+        <select id="fState"><option value="">all</option><option>queued</option><option>running</option><option>succeeded</option><option>dead</option><option>cancelled</option></select>
+      </label>
+      <label>Queue <input id="fQueue" placeholder="any"></label>
+      <label>Correlation ID <input id="fCorr" placeholder="prefix"></label>
+      <button id="refresh">Refresh</button>
+    </section>
+    <table>
+      <thead><tr><th>ID</th><th>Queue</th><th>Type</th><th>State</th><th>Attempts</th><th>Created</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p id="empty" hidden>No jobs match.</p>
+    <aside id="detail" hidden aria-label="Job detail">
+      <button id="closeDetail" aria-label="Close">×</button>
+      <h2 id="dTitle"></h2>
+      <pre id="dBody"></pre>
+      <h3>Events</h3>
+      <ol id="dEvents"></ol>
+    </aside>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
